@@ -26,9 +26,9 @@ public class HomeWork_6 {
         System.out.println(" ");
 
         // Ming's army
-        int warriorAttackMing = 13;
-        int archerAttackMing = 24;
-        int riderAttackMing = 46;
+        int warriorAttackMing = 9;
+        int archerAttackMing = 35;
+        int riderAttackMing = 12;
         int amountArmyMing = (int)(amountArmyLi*1.5);
         int warriorPowerAttackMing = warriorAttackMing*amountArmyMing;
         int archerPowerAttackMing = archerAttackMing*amountArmyMing;

@@ -35,6 +35,7 @@ public class HomeWork_7 {
                 break;
             }
         }
+        //final
         if (flagWinner == true) {
             System.out.println("Переможець! Гру закінчено.");
         } else {

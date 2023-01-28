@@ -12,10 +12,11 @@ public class Home_Work_18 {
                 "Coca-Cola ");
         System.out.println(" ");
         Scanner scanner = new Scanner(System.in);
+        int totalAmount = 0;
 
 
 
-        while (flag == true) {
+        while (flag) {
 
             System.out.print("Please, write what would you like to drink: ");
             String drinksChoice = scanner.nextLine();
@@ -24,72 +25,68 @@ public class Home_Work_18 {
             catch (IllegalArgumentException e){DrinksMachine drinks = DrinksMachine.DEFAULT;}
             DrinksMachine drinks;
             switch (clietsOrder) {
-                case "COFFEE":
-                    DrinksMachine yourCoffee = DrinksMachine.COFFEE;
-                    makeYourDrinks(yourCoffee);
+                case "COFFEE" -> {
+                    Drinks yourCoffee = new Drinks(DrinksMachine.COFFEE);
+                    yourCoffee.getDrinksCoffee(makeYourDrinks(yourCoffee));
+                    System.out.println(yourCoffee);
+                    totalAmount += yourCoffee.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                case "TEA":
-                    DrinksMachine yourTea = DrinksMachine.TEA;
-                    makeYourDrinks(yourTea);
+                }
+                case "TEA" -> {
+                    Drinks yourTea = new Drinks(DrinksMachine.TEA);
+                    yourTea.getDrinksTea(makeYourDrinks(yourTea));
+                    System.out.println(yourTea);
+                    totalAmount += yourTea.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                case "LEMONADE":
-                    DrinksMachine yourLemonade = DrinksMachine.LEMONADE;
-                    makeYourDrinks(yourLemonade);
+                }
+                case "LEMONADE" -> {
+                    Drinks yourLemonade = new Drinks(DrinksMachine.LEMONADE);
+                    yourLemonade.getDrinksLemonade(makeYourDrinks(yourLemonade));
+                    System.out.println(yourLemonade);
+                    totalAmount += yourLemonade.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                case "MOJITO":
-                    DrinksMachine yourMojito = DrinksMachine.MOJITO;
-                    makeYourDrinks(yourMojito);
+                }
+                case "MOJITO" -> {
+                    Drinks yourMojito = new Drinks(DrinksMachine.MOJITO);
+                    yourMojito.getDrinksMojito(makeYourDrinks(yourMojito));
+                    System.out.println(yourMojito);
+                    totalAmount += yourMojito.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                case "MINERAL_WATER":
-                    DrinksMachine yourMineral_water = DrinksMachine.MINERAL_WATER;
-                    makeYourDrinks(yourMineral_water);
+                }
+                case "MINERAL_WATER" -> {
+                    Drinks yourMineral_water = new Drinks(DrinksMachine.MINERAL_WATER);
+                    yourMineral_water.getDrinksMineral_water(makeYourDrinks(yourMineral_water));
+                    System.out.println(yourMineral_water);
+                    totalAmount += yourMineral_water.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                case "COCA_COLA":
-                    DrinksMachine yourCoca_cola = DrinksMachine.COCA_COLA;
-                    makeYourDrinks(yourCoca_cola);
+                }
+                case "COCA_COLA" -> {
+                    Drinks yourCoca_cola = new Drinks(DrinksMachine.COCA_COLA);
+                    yourCoca_cola.getDrinksCoca_cola(makeYourDrinks(yourCoca_cola));
+                    System.out.println(yourCoca_cola);
+                    totalAmount += yourCoca_cola.amountDrinks;
                     flag = nextDrinks();
-                    break;
-
-                default:
+                }
+                default -> {
                     System.out.println("The drink is absent ");
                     flag = nextDrinks();
-                    break;
-
+                }
             }
-    }
-        int totalAmount = 0;
-        DrinksMachine [] listOfOrder = DrinksMachine.values();
-        for (int i=0; i< (listOfOrder.length-1); i++){
-            if (listOfOrder[i].getAmount() > 0) {
-                totalAmount += listOfOrder[i].getAmount();
-                System.out.println("Your order: " + listOfOrder[i]);
-            }
-        }
-        System.out.println("Amount of the order: " + totalAmount);
 
     }
-    private static void makeYourDrinks (DrinksMachine yourDrinks) {
+        if (totalAmount > 0) {
+                System.out.println("Amount payable: " + totalAmount);}
+        else System.out.println("See you!");
+
+
+   }
+    private static int makeYourDrinks (Drinks yourDrinks) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Please, write how many quantity of "+yourDrinks.getDrinks()+
+        System.out.print("Please, write how many quantity of " + yourDrinks.drinksMachine.getDrinks() +
                 " do you want: ");
-        int quantity = sc.nextInt();
-        yourDrinks.setQuantity(quantity);
-        int amount = yourDrinks.getAmount();
-        int totalAmount = 0;
-        totalAmount += amount;
-        System.out.println(yourDrinks);
-        System.out.println(amount);
+        return sc.nextInt();
     }
+
 
     private static boolean nextDrinks() {
 
@@ -97,8 +94,7 @@ public class Home_Work_18 {
         Scanner sc1 = new Scanner(System.in);
         System.out.print("Would you like to take next drinks? (YES/NO): ");
         nextDrinks = sc1.nextLine();
-        if ((nextDrinks.trim().toUpperCase()).equals("YES")) return true;
-        else return false;
+        return (nextDrinks.trim().toUpperCase()).equals("YES");
     }
 
 

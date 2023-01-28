@@ -5,10 +5,18 @@ public enum DrinksMachine {
     DEFAULT("We don't have this dink. Please try again!");
 
     final String drinks;
+    private int price;
 
 
     private DrinksMachine(String drinks) {
         this.drinks = drinks;
+    }
+
+
+    public int setPrice(int price) {
+        this.price = price;
+
+        return price;
     }
 
     public String getDrinks() {
@@ -18,6 +26,7 @@ public enum DrinksMachine {
 
 
 }
+
 
 
 

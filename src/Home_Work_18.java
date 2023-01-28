@@ -14,9 +14,9 @@ public class Home_Work_18 {
         Scanner scanner = new Scanner(System.in);
 
 
+
         while (flag == true) {
 
-            Drinks priceDrinks = new Drinks();
             System.out.print("Please, write what would you like to drink: ");
             String drinksChoice = scanner.nextLine();
             String clietsOrder = drinksChoice.trim().toUpperCase();
